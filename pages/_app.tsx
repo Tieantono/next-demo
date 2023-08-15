@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { NextPageWithLayout } from './layouts/NextPageWithLayout'
+import { NextPageWithLayout } from '../components/layouts/NextPageWithLayout'
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout

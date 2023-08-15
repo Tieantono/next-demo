@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
-import { NextPageWithLayout } from "./layouts/NextPageWithLayout";
-import CustomLayout from "./layouts/CustomLayout";
+import { NextPageWithLayout } from "../components/layouts/NextPageWithLayout";
+import CustomLayout from "../components/layouts/CustomLayout";
 
 const About: React.FC = () => {
     return (

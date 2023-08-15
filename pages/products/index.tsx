@@ -2,8 +2,8 @@ import fetcher from "@/functions/fetcher";
 import { ProductData } from "@/types/ProductData";
 import { ReactElement, useEffect, useState } from "react";
 import useSWR from "swr";
-import CustomLayout from "../layouts/CustomLayout";
-import { NextPageWithLayout } from "../layouts/NextPageWithLayout";
+import CustomLayout from "../../components/layouts/CustomLayout";
+import { NextPageWithLayout } from "../../components/layouts/NextPageWithLayout";
 import Link from "next/link";
 
 const ProductIndex: React.FC = () => {

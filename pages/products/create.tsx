@@ -1,5 +1,5 @@
-import { NextPageWithLayout } from "../layouts/NextPageWithLayout";
-import CustomLayout from "../layouts/CustomLayout";
+import { NextPageWithLayout } from "../../components/layouts/NextPageWithLayout";
+import CustomLayout from "../../components/layouts/CustomLayout";
 import { ReactElement, useState } from "react";
 import { GetServerSideProps } from "next";
 import { Product } from "@/types/ProductData";
