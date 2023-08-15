@@ -10,7 +10,7 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       <Link href="/about" className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>About</Link>
-      <a href='/products' className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Products</a>
+      {/* <a href='/products' className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Products</a> */}
     </main>
   )
 }
