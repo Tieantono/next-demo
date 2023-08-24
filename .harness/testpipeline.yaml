@@ -1,0 +1,70 @@
+pipeline:
+  name: test-pipeline
+  identifier: testpipeline
+  projectIdentifier: testing
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: deploy
+        identifier: deploy
+        description: ""
+        type: Deployment
+        spec:
+          serviceConfig:
+            serviceRef: testservice
+            serviceDefinition:
+              spec:
+                variables: []
+                manifests:
+                  - manifest:
+                      identifier: IsuzuIdBms
+                      type: K8sManifest
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: Accelist
+                            gitFetchType: Branch
+                            paths:
+                              - deployment/staging/bms-be.yaml
+                            repoName: isuzu-id-kubernetes
+                            branch: bms
+                        skipResourceVersioning: false
+                        enableDeclarativeRollback: false
+              type: Kubernetes
+          infrastructure:
+            environmentRef: dev_1692862650075
+            infrastructureDefinition:
+              type: KubernetesDirect
+              spec:
+                connectorRef: K8s_Cluster_1692862447139
+                namespace: default
+                releaseName: release-<+INFRA_KEY>
+            allowSimultaneousDeployments: false
+          execution:
+            steps:
+              - step:
+                  name: Rollout Deployment
+                  identifier: rolloutDeployment
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
+        variables: []
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
